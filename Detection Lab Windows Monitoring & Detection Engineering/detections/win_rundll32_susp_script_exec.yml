@@ -1,0 +1,31 @@
+title: Suspicious Rundll32 Script/Ordinal Execution
+id: c5b72183-503c-4a3b-ab29-f55db1a70b02
+status: stable
+description: Detects rundll32 executing inline scripts or unnamed ordinal exports.
+author: Detection Engineer
+date: 2023-10-25
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_binary:
+    Image|endswith: '\rundll32.exe'
+  selection_cmdline:
+    CommandLine|contains:
+      - 'javascript:'
+      - 'vbscript:'
+      - 'mshtml,RunHTMLApplication'
+      - '#1 '
+  filter_allowlist:
+    ParentImage|endswith: '\system32\svchost.exe'
+  condition: selection_binary and selection_cmdline and not filter_allowlist
+fields:
+  - user
+  - process_name
+  - command_line
+  - parent_process_name
+level: high
+tags:
+  - attack.execution
+  - attack.defense_evasion
+  - attack.t1218.011

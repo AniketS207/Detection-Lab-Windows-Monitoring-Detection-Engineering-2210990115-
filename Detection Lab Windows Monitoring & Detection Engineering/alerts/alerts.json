@@ -1,0 +1,47 @@
+[
+    {
+        "rule_name": "Windows Defender Tampering via PowerShell",
+        "severity": "critical",
+        "event_id": 1,
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "parent_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"Add-MpPreference -ExclusionPath C:\\Temp\"",
+        "timestamp": "2026-05-14 15:12:12"
+    },
+    {
+        "rule_name": "Suspicious Rundll32 Script/Ordinal Execution",
+        "severity": "high",
+        "event_id": 1,
+        "image": "C:\\Windows\\System32\\rundll32.exe",
+        "parent_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\system32\\rundll32.exe\" mshtml,RunHTMLApplication",
+        "timestamp": "2026-05-14 15:12:14"
+    },
+    {
+        "rule_name": "Suspicious Rundll32 Script/Ordinal Execution",
+        "severity": "high",
+        "event_id": 1,
+        "image": "C:\\Windows\\System32\\rundll32.exe",
+        "parent_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\system32\\rundll32.exe\" vbscript:Execute \"MsgBox \"test\"\"",
+        "timestamp": "2026-05-14 15:12:14"
+    },
+    {
+        "rule_name": "Windows Defender Tampering via PowerShell",
+        "severity": "critical",
+        "event_id": 1,
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "parent_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"Set-MpPreference -DisableRealtimeMonitoring $true\"",
+        "timestamp": "2026-05-14 15:12:14"
+    },
+    {
+        "rule_name": "Windows Defender Tampering via PowerShell",
+        "severity": "critical",
+        "event_id": 1,
+        "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "parent_image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "command_line": "\"C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -Command \"Add-MpPreference -ExclusionPath C:\\Temp\"",
+        "timestamp": "2026-05-14 15:12:14"
+    }
+]

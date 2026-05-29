@@ -1,0 +1,27 @@
+title: Windows Defender Tampering via PowerShell
+id: 8a4b64e0-51a2-4752-a582-7d8e8b839fbc
+status: stable
+description: Detects administrative commands disabling Defender real-time protection or adding exclusion paths.
+author: Detection Engineer
+date: 2023-10-25
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection:
+    CommandLine|contains:
+      - 'Set-MpPreference'
+      - 'Add-MpPreference'
+  parameters:
+    CommandLine|contains:
+      - '-DisableRealtimeMonitoring $true'
+      - '-DisableBehaviorMonitoring $true'
+      - '-ExclusionPath'
+  condition: selection and parameters
+fields:
+  - user
+  - command_line
+level: critical
+tags:
+  - attack.defense_evasion
+  - attack.t1562.001
